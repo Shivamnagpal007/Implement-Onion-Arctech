@@ -1,0 +1,75 @@
+ 							Onion Arcitechture
+
+
+Advantages of Onion Architecture->
+.There are several advantages of the Onion Architecture, as listed below.
+.It provides better maintainability as all the codes depend on layers or the center.
+.It provides better testability as the unit test can be created for separate layers 
+   without an effect of other modules of the application.
+.It develops a loosely coupled application as the outer layer of the application 
+  always communicates with the inner layer via interfaces.
+.Any concrete implantation would be provided to the application at run time
+.Domain entities are core and center part. It can have access to both the database and UI layers.
+.The internal layers never depend on the external layer. The code that may have changed should be part of an external layer.
+
+
+							Onion Architecture Layers
+
+1.Domain Entities Layer
+2.Repository Layer
+3.Service Layer
+4.UI (Web/Unit Test) Layer
+
+1.Domain Entities Layer
+  It is the center part of the architecture. It holds all application domain objects. 
+If an application is developed with the ORM entity framework then this layer holds POCO classes (Code First) or Edmx (Database First) with entities. 
+These domain entities don't have any dependencies.
+2.Repository Layer
+ 
+The layer is intended to create an abstraction layer between the Domain entities layer and the Business Logic layer of an application. It is a data access pattern that prompts a more loosely coupled approach to data access.
+We create a generic repository, which queries the data source for the data, maps the data from the data source to a business entity, 
+and persists changes in the business entity to the data source.
+ 
+3.Service Layer
+ The layer holds interfaces which are used to communicate between the UI layer and repository layer.
+ It holds business logic for an entity so it’s called the business logic layer as well.
+ 
+4.UI Layer
+ 
+It’s the most external layer. It could be the web application, Web API, or Unit Test project.
+This layer has an implementation of the Dependency Inversion Principle so that the application builds a loosely coupled application. 
+It communicates to the internal layer via interfaces.
+
+ 
+There are four projects in which three are class library projects and one is a web application project. Let’s see each project mapping with onion architecture layers.
+OA.Data
+ 
+It is a class library project. It holds POCO classes along with configuration classes.
+ It represents the Domain Entities layer of the onion architecture. 
+These classes are used to create database tables. It’s a core and central part of the application.
+ 
+OA.Repo
+ 
+It is a second class library project.
+It holds a generic repository class with its interface implementation. 
+It also holds a DbContext class. 
+The Entity Framework Code First data access approach needs to create a data access context class that inherits from the DbContext class.
+This project represents the Repository layer of the onion architecture.
+ 
+OA.Service
+ 
+It is a third class library project. 
+It holds business logic and interfaces.
+ These interfaces communicate between UI and data access logic.
+ As it communicates via interfaces,  it builds applications that are loosely coupled.
+ This project represents the Service layer of the onion architecture.
+ 
+OA.Web
+ 
+It is an ASP.NET Core Web application in this sample but it could be a Unit Test or Web API project.
+ It is the most external part of an application by which the end-user can interact with the application.
+ It builds loosely coupled applications with in-built dependency injection in ASP.NET Core. 
+It represents the UI layer of the onion architecture.
+
+
+
