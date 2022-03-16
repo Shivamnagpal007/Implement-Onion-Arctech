@@ -1,6 +1,7 @@
 ﻿using Domain_Layer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using Service_Layer.Services.IServices;
 using System;
 using System.Collections.Generic;
@@ -21,15 +22,23 @@ namespace Implement_Onion_Arctech.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDepartments()
-        {
-
-            var EmployeeList = _employeeService.GetAll().ToList();
-            return Ok(EmployeeList);
+        public IActionResult GetEmployees()
+        {         
+            try
+            {
+                Log.Information(messageTemplate: "Application started with Get Employees");
+                var EmployeeList = _employeeService.GetAll().ToList();
+                return Ok(EmployeeList);
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+           
 
         }
         [HttpGet("{Id:int}", Name = "Getdep")]
-        public IActionResult GetDepatment(int Id)
+        public IActionResult GetEmployeesById(int Id)
         {
 
             var Employee = _employeeService.Get(Id);
@@ -38,7 +47,7 @@ namespace Implement_Onion_Arctech.Controllers
             return Ok(Employee);
         }
         [HttpPost]
-        public IActionResult CreateDepartment([FromBody] Employee employee)
+        public IActionResult CreateEmployee([FromBody] Employee employee)
         {
             if (employee == null)            
                 return BadRequest();  // 400 Error         
@@ -51,7 +60,7 @@ namespace Implement_Onion_Arctech.Controllers
 
         }
         [HttpPut("{Id:int}")]
-        public IActionResult UpdateDepartment(int Id, [FromBody] Employee employee)
+        public IActionResult UpdateEmployee(int Id, [FromBody] Employee employee)
         {
             if (employee == null)
                 return BadRequest();
@@ -65,7 +74,7 @@ namespace Implement_Onion_Arctech.Controllers
 
         }
         [HttpDelete("{Id:int}")]
-        public IActionResult DeleteDepartment(int Id)
+        public IActionResult DeleteEmployee(int Id)
         {        
             if (Id == 0)
                 return NotFound();

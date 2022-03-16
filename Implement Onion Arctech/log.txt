@@ -1,0 +1,16 @@
+2022-03-16 11:54:03.484 +05:30 [INF] Application started
+2022-03-16 11:54:04.354 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-16 11:54:04.356 +05:30 [INF] Hosting environment: Development
+2022-03-16 11:54:04.357 +05:30 [INF] Content root path: D:\Implement Onion Arctech\Implement Onion Arctech
+2022-03-16 11:54:04.373 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/index.html - -
+2022-03-16 11:54:04.503 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/index.html - - - 200 - text/html;charset=utf-8 135.6534ms
+2022-03-16 11:54:04.582 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - -
+2022-03-16 11:54:04.666 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44329/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 84.1836ms
+2022-03-16 11:54:14.629 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44329/api/Employee - -
+2022-03-16 11:54:14.657 +05:30 [INF] Executing endpoint 'Implement_Onion_Arctech.Controllers.EmployeeController.GetDepartments (Implement Onion Arctech)'
+2022-03-16 11:54:14.672 +05:30 [INF] Route matched with {action = "GetDepartments", controller = "Employee"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetDepartments() on controller Implement_Onion_Arctech.Controllers.EmployeeController (Implement Onion Arctech).
+2022-03-16 11:54:15.215 +05:30 [INF] Entity Framework Core 5.0.14 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-03-16 11:54:26.240 +05:30 [INF] Application started with Departments
+2022-03-16 11:54:27.445 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Id], [e].[Address], [e].[Name], [e].[Salary]
+FROM [EmployeesTables] AS [e]
